@@ -1,19 +1,14 @@
 const args = process.argv.slice(2);
 console.log(args);
-for (let i = 0; i < args.length; i++) {
-  let num = Number(args[i]);//changing strings to numbers 
-  if (num === undefined) {
-    break;
+for (let x of args) {
+  if (!isNaN(x)) {//if x is a number then execute the code inside
+    if (x >= 0) {//if x is greater than 0
+      x = 1000 * Number(x);//x is 1000 larger to make it in seconds
+      setTimeout(() => {
+        process.stdout.write('Hello \n');//sound does not work for me so I used a string instead
+      }, x);
+    }
   }
-  if (num < 0) {
-    continue;
-  }
-  if (typeof num !== 'number') {
-    continue;
-  } else {
-    setTimeout(() => {
-      process.stdout.write('Hello \n');//sound does not work for me so I used a string instead
-    }, args[i] * 1000); 
-  }
-};
+}
 
+//isNaN https://www.w3schools.com/jsref/jsref_isnan.asp
